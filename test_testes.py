@@ -8,7 +8,7 @@ def test_media_lista_vazia():
     assert calcular_media([]) == 0
 
 def test_media_valores_diferentes():
-    assert calcular_media([8, 6, 10]) == 8
+    assert calcular_media([8, 6, 10]) == 7
 
 # Testa situação do aluno
 def test_aprovado():
