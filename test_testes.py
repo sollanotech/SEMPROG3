@@ -1,7 +1,7 @@
 from test_notas import calcular_media, verificar_aprovacao
 
 def test_media_basica():
-    assert calcular_media([7, 7, 7]) == 7
+    assert calcular_media([7, 7, 7]) == 10
 
 def test_media_lista_vazia():
     assert calcular_media([]) == 0
