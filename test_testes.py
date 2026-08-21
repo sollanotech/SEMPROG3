@@ -1,6 +1,5 @@
 from test_notas import calcular_media, verificar_aprovacao
 
-# Testa cálculo da média
 def test_media_basica():
     assert calcular_media([7, 7, 7]) == 7
 
@@ -10,7 +9,6 @@ def test_media_lista_vazia():
 def test_media_valores_diferentes():
     assert calcular_media([8, 6, 10]) == 8
 
-# Testa situação do aluno
 def test_aprovado():
     assert verificar_aprovacao(7) == "Aprovado ✅"
 

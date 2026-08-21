@@ -1,34 +1,36 @@
-# 📌 Nome da automação — aparece na aba Actions
 name: SEMPROG3
 
-# ⚡ QUANDO vai rodar?
 on:
-  push:                    # Toda vez que eu enviar código
+  push:                    
     branches: ["main"]
-  pull_request:            # Toda vez que eu propor alterações
+  pull_request:            
     branches: ["main"]
-  workflow_dispatch:       # ✅ Permite rodar MANUALMENTE pela interface
+  workflow_dispatch:       
 
-# 🛠️ O QUE vai fazer?
 jobs:
-  executar-testes:         # Nome da tarefa
-    runs-on: ubuntu-latest # Sistema operacional da máquina virtual
+  executar-testes:        
+    name: Testar em ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}  # ✅ Usa o sistema da lista
+
+    strategy:
+      fail-fast: false          # ✅ Não para tudo se um falhar
+      matrix:
+        os:                     # 🖥️ Lista de SOs
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
 
     steps:
-      # Passo 1 — Baixa o código do repositório
       - name: 📥 Pegar código
         uses: actions/checkout@v4
 
-      # Passo 2 — Instala o Python na máquina virtual
       - name: 🐍 Instalar Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      # Passo 3 — Instala a ferramenta de testes
       - name: 📦 Instalar dependências
         run: pip install pytest
 
-      # Passo 4 — Roda TODOS os testes! ✨
       - name: 🧪 Executar testes
         run: python -m pytest -v
